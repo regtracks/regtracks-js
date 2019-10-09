@@ -4,8 +4,9 @@
   "description": "The JS RegTracks parser",
   "main": "index.js",
   "author": "James Thistlewood",
-  "license": "GPL-2.0",
+  "license": "GPL-3.0",
   "private": false,
+  "repository": "https://github.com/regtracks/regtracks-js",
   "devDependencies": {
     "jest": "^24.9.0",
     "version-bump-prompt": "^5.0.5"

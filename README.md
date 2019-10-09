@@ -96,3 +96,5 @@ chees3
 ## Contributing
 
 Contributions are very much welcomed! Please, fork and make a PR. Issues are also appreciated.
+
+This package uses `yarn`. Install with `yarn`. Run tests with `yarn test`.

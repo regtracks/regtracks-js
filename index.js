@@ -1,3 +1,3 @@
-const Track = require('./track');
+const Track = require('./src/track');
 
 module.exports = Track;

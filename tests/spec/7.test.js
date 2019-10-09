@@ -25,10 +25,10 @@ describe('tests section 7 of the specification', () => {
     let bad = 'e-b-d,';
     let bad2 = 'e,b,d';
 
-    expect(track.test(good, 'vars', vars)).toBe(true);
-    expect(track.test(good2, 'vars', vars)).toBe(true);
-    expect(track.test(bad, 'vars', vars)).toBe(false);
-    expect(track.test(bad2, 'vars', vars)).toBe(false);
+    expect(track.test(good, 'vars', {}, vars)).toBe(true);
+    expect(track.test(good2, 'vars', {}, vars)).toBe(true);
+    expect(track.test(bad, 'vars', {}, vars)).toBe(false);
+    expect(track.test(bad2, 'vars', {}, vars)).toBe(false);
 
     expect(() => track.test(good, 'vars')).toThrow();
   });
