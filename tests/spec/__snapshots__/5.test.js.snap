@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests section 5 of the specification section 5.1: symbols 1`] = `
+Object {
+  "againValid": Object {
+    "matches": Array [
+      Object {
+        "matches": "a",
+        "type": "literal_criterion",
+      },
+      Object {
+        "matches": "b",
+        "type": "literal_criterion",
+      },
+      Object {
+        "matches": "c",
+        "type": "literal_criterion",
+      },
+      Object {
+        "matches": "digit",
+        "type": "symbol_criterion",
+      },
+      Object {
+        "matches": "space",
+        "type": "symbol_criterion",
+      },
+    ],
+    "name": "againValid",
+    "type": "charset",
+  },
+  "valid_23b2": Object {
+    "name": "valid_23b2",
+    "root": Object {
+      "children": Array [
+        Object {
+          "collectionIdent": undefined,
+          "forks": false,
+          "inclusive": true,
+          "matches": Array [
+            Object {
+              "matches": /\\[a-z\\]/,
+              "type": "character_range_criterion",
+            },
+          ],
+          "optional": false,
+          "repeat": undefined,
+          "type": "matching_rule",
+        },
+      ],
+      "collectionIdent": undefined,
+      "forks": false,
+      "optional": false,
+      "parent": undefined,
+      "repeat": undefined,
+      "type": "block",
+    },
+    "type": "pattern",
+  },
+}
+`;

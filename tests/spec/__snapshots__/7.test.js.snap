@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests section 7 of the specification section 7.1: variables 1`] = `
+Object {
+  "vars": Object {
+    "name": "vars",
+    "root": Object {
+      "children": Array [
+        Object {
+          "collectionIdent": undefined,
+          "forks": false,
+          "inclusive": true,
+          "matches": Array [
+            Object {
+              "matches": /\\[a-z\\]/,
+              "type": "character_range_criterion",
+            },
+          ],
+          "optional": false,
+          "repeat": Object {
+            "after": Object {
+              "collectionIdent": undefined,
+              "forks": false,
+              "inclusive": true,
+              "matches": Array [
+                Object {
+                  "matches": "delim",
+                  "type": "variable",
+                },
+              ],
+              "optional": false,
+              "repeat": undefined,
+              "type": "matching_rule",
+            },
+            "times": Array [
+              1,
+              -1,
+            ],
+            "type": "repeat_modifier",
+          },
+          "type": "matching_rule",
+        },
+        Object {
+          "collectionIdent": undefined,
+          "forks": false,
+          "inclusive": true,
+          "matches": Array [
+            Object {
+              "matches": "end",
+              "type": "variable",
+            },
+          ],
+          "optional": false,
+          "repeat": undefined,
+          "type": "matching_rule",
+        },
+      ],
+      "collectionIdent": undefined,
+      "forks": false,
+      "optional": false,
+      "parent": undefined,
+      "repeat": undefined,
+      "type": "block",
+    },
+    "type": "pattern",
+  },
+}
+`;

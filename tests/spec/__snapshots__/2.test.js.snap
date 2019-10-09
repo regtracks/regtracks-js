@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests section 2 of the specification section 2.4: pattern delimiters 1`] = `
+Object {
+  "named_pattern": Object {
+    "name": "named_pattern",
+    "root": Object {
+      "children": Array [
+        Object {
+          "collectionIdent": undefined,
+          "forks": false,
+          "inclusive": true,
+          "matches": Array [
+            Object {
+              "matches": "test?",
+              "type": "literal_criterion",
+            },
+          ],
+          "optional": false,
+          "repeat": undefined,
+          "type": "matching_rule",
+        },
+        Object {
+          "collectionIdent": undefined,
+          "forks": false,
+          "inclusive": false,
+          "matches": Array [
+            Object {
+              "matches": /\\[a-z\\]/,
+              "type": "character_range_criterion",
+            },
+          ],
+          "optional": false,
+          "repeat": undefined,
+          "type": "matching_rule",
+        },
+      ],
+      "collectionIdent": undefined,
+      "forks": false,
+      "optional": false,
+      "parent": undefined,
+      "repeat": undefined,
+      "type": "block",
+    },
+    "type": "pattern",
+  },
+}
+`;

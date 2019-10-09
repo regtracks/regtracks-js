@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests section 1 of the specification section 1.1: unicode 1`] = `
+Object {
+  "foobar": Object {
+    "name": "foobar",
+    "root": Object {
+      "children": Array [
+        Object {
+          "collectionIdent": undefined,
+          "forks": false,
+          "inclusive": true,
+          "matches": Array [
+            Object {
+              "matches": "Ϣ",
+              "type": "literal_criterion",
+            },
+            Object {
+              "matches": "ח",
+              "type": "literal_criterion",
+            },
+            Object {
+              "matches": "ඐ",
+              "type": "literal_criterion",
+            },
+            Object {
+              "matches": "a",
+              "type": "literal_criterion",
+            },
+            Object {
+              "matches": "b",
+              "type": "literal_criterion",
+            },
+            Object {
+              "matches": "c",
+              "type": "literal_criterion",
+            },
+            Object {
+              "matches": "䔘䬨",
+              "type": "literal_criterion",
+            },
+          ],
+          "optional": false,
+          "repeat": undefined,
+          "type": "matching_rule",
+        },
+        Object {
+          "collectionIdent": undefined,
+          "forks": true,
+          "inclusive": true,
+          "matches": Array [
+            Object {
+              "matches": "䰅䰅䰅",
+              "type": "literal_criterion",
+            },
+          ],
+          "optional": false,
+          "repeat": undefined,
+          "type": "matching_rule",
+        },
+      ],
+      "collectionIdent": undefined,
+      "forks": false,
+      "optional": false,
+      "parent": undefined,
+      "repeat": undefined,
+      "type": "block",
+    },
+    "type": "pattern",
+  },
+}
+`;

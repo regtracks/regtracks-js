@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests section 6 of the specification section 6.1: charsets 1`] = `
+Object {
+  "set": Object {
+    "matches": Array [
+      Object {
+        "matches": "a",
+        "type": "literal_criterion",
+      },
+      Object {
+        "matches": "b",
+        "type": "literal_criterion",
+      },
+      Object {
+        "matches": "cheese",
+        "type": "literal_criterion",
+      },
+      Object {
+        "matches": /\\[f-z\\]/,
+        "type": "character_range_criterion",
+      },
+      Object {
+        "matches": "digit",
+        "type": "symbol_criterion",
+      },
+      Object {
+        "matches": "whitespace",
+        "type": "symbol_criterion",
+      },
+    ],
+    "name": "set",
+    "type": "charset",
+  },
+}
+`;

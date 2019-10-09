@@ -1,0 +1,221 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests section 3 of the specification section 3.5.3: closing blocks 1`] = `
+Object {
+  "good": Object {
+    "name": "good",
+    "root": Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "collectionIdent": undefined,
+              "forks": false,
+              "inclusive": true,
+              "matches": Array [
+                Object {
+                  "matches": "digit",
+                  "type": "symbol_criterion",
+                },
+              ],
+              "optional": false,
+              "repeat": undefined,
+              "type": "matching_rule",
+            },
+          ],
+          "collectionIdent": undefined,
+          "forks": false,
+          "optional": false,
+          "parent": [Circular],
+          "repeat": undefined,
+          "type": "block",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "collectionIdent": undefined,
+              "forks": false,
+              "inclusive": true,
+              "matches": Array [
+                Object {
+                  "matches": /\\[a-z\\]/,
+                  "type": "character_range_criterion",
+                },
+              ],
+              "optional": false,
+              "repeat": undefined,
+              "type": "matching_rule",
+            },
+          ],
+          "collectionIdent": "this",
+          "forks": false,
+          "optional": false,
+          "parent": [Circular],
+          "repeat": undefined,
+          "type": "block",
+        },
+      ],
+      "collectionIdent": undefined,
+      "forks": false,
+      "optional": false,
+      "parent": undefined,
+      "repeat": undefined,
+      "type": "block",
+    },
+    "type": "pattern",
+  },
+}
+`;
+
+exports[`tests section 3 of the specification sections 3.5.1-2, 3.5.4: blocks 1`] = `
+Object {
+  "blocks": Object {
+    "name": "blocks",
+    "root": Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "collectionIdent": undefined,
+              "forks": false,
+              "inclusive": true,
+              "matches": Array [
+                Object {
+                  "matches": /\\[a-z\\]/,
+                  "type": "character_range_criterion",
+                },
+              ],
+              "optional": false,
+              "repeat": undefined,
+              "type": "matching_rule",
+            },
+          ],
+          "collectionIdent": undefined,
+          "forks": false,
+          "optional": true,
+          "parent": [Circular],
+          "repeat": undefined,
+          "type": "block",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "collectionIdent": undefined,
+              "forks": false,
+              "inclusive": true,
+              "matches": Array [
+                Object {
+                  "matches": /\\[a-z\\]/,
+                  "type": "character_range_criterion",
+                },
+              ],
+              "optional": false,
+              "repeat": undefined,
+              "type": "matching_rule",
+            },
+          ],
+          "collectionIdent": undefined,
+          "forks": false,
+          "optional": false,
+          "parent": [Circular],
+          "repeat": undefined,
+          "type": "block",
+        },
+      ],
+      "collectionIdent": undefined,
+      "forks": false,
+      "optional": false,
+      "parent": undefined,
+      "repeat": undefined,
+      "type": "block",
+    },
+    "type": "pattern",
+  },
+  "blocks2": Object {
+    "name": "blocks2",
+    "root": Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "collectionIdent": undefined,
+              "forks": false,
+              "inclusive": true,
+              "matches": Array [
+                Object {
+                  "matches": "?",
+                  "type": "literal_criterion",
+                },
+              ],
+              "optional": false,
+              "repeat": undefined,
+              "type": "matching_rule",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "collectionIdent": undefined,
+                  "forks": false,
+                  "inclusive": true,
+                  "matches": Array [
+                    Object {
+                      "matches": "!",
+                      "type": "literal_criterion",
+                    },
+                  ],
+                  "optional": false,
+                  "repeat": undefined,
+                  "type": "matching_rule",
+                },
+                Object {
+                  "children": Array [
+                    Object {
+                      "collectionIdent": undefined,
+                      "forks": false,
+                      "inclusive": true,
+                      "matches": Array [
+                        Object {
+                          "matches": ".",
+                          "type": "literal_criterion",
+                        },
+                      ],
+                      "optional": false,
+                      "repeat": undefined,
+                      "type": "matching_rule",
+                    },
+                  ],
+                  "collectionIdent": undefined,
+                  "forks": false,
+                  "optional": false,
+                  "parent": [Circular],
+                  "repeat": undefined,
+                  "type": "block",
+                },
+              ],
+              "collectionIdent": undefined,
+              "forks": false,
+              "optional": false,
+              "parent": [Circular],
+              "repeat": undefined,
+              "type": "block",
+            },
+          ],
+          "collectionIdent": undefined,
+          "forks": false,
+          "optional": false,
+          "parent": [Circular],
+          "repeat": undefined,
+          "type": "block",
+        },
+      ],
+      "collectionIdent": undefined,
+      "forks": false,
+      "optional": false,
+      "parent": undefined,
+      "repeat": undefined,
+      "type": "block",
+    },
+    "type": "pattern",
+  },
+}
+`;

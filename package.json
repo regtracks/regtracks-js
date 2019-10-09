@@ -1,0 +1,15 @@
+{
+  "name": "regtracks",
+  "version": "0.1.0",
+  "description": "The JS RegTracks parser",
+  "main": "index.js",
+  "author": "James Thistlewood",
+  "license": "GPL-2.0",
+  "private": false,
+  "devDependencies": {
+    "jest": "^24.9.0"
+  },
+  "scripts": {
+    "test": "jest"
+  }
+}
