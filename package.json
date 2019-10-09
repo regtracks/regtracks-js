@@ -11,6 +11,7 @@
     "version-bump-prompt": "^5.0.5"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "bump": "bump -cpt"
   }
 }
