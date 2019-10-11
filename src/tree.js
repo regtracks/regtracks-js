@@ -122,7 +122,7 @@ class Tree {
     this.current.repeat = undefined;
 
     // Add a root-level block so that everything is easily contained
-    this.addBlock(false);
+    this.addBlock();
   }
 
   /**
@@ -131,8 +131,9 @@ class Tree {
    * @param forks (optional, default `false`) whether this block can be matched instead of the previous rule/block.
    * @param optional (optional, default `false`) whether this block is optional and can be skipped
    * @param afterRepeat (optional, default `false`) whether this block comes after the `after` keyword
+   * @param notMatch (optional, default `false`) whether this block must not be matched for parsing to continue
    */
-  addBlock(forks = false, optional = false, afterRepeat = false) {
+  addBlock(forks = false, optional = false, afterRepeat = false, notMatch = false) {
     this.assertExists(this.current.pattern);
     let block = {
       type: types.BLOCK,
@@ -141,6 +142,7 @@ class Tree {
       repeat: undefined,
       forks,
       optional,
+      notMatch,
       collectionIdent: undefined,
     };
 
@@ -181,8 +183,9 @@ class Tree {
    * @param forks (optional, default `false`) whether this pattern can be used alternatively to the last rule/block
    * @param optional (optional, default `false`) whether this pattern is optional and can be skipped
    * @param afterRepeat (optional, default `false`) whether this pattern comes after the `after` keyword
+   * @param notMatch (optional, default `false`) whether this block must not be matched for parsing to continue
    */
-  addPatternReference(name, forks = false, optional = false, afterRepeat = false) {
+  addPatternReference(name, forks = false, optional = false, afterRepeat = false, notMatch = false) {
     this.assertExists(this.current.block);
 
     let ref = {
@@ -190,6 +193,7 @@ class Tree {
       name,
       forks,
       optional,
+      notMatch,
       repeat: undefined,
       collectionIdent: undefined,
     };
@@ -216,8 +220,9 @@ class Tree {
    * @param isInclusive (optional, default `true`) if not a literal, whether the set
    *  is an 'any' (inclusive) set, or a 'none' set.
    * @param afterRepeat (optional, default `false`) whether this block comes after the `after` keyword
+   * @param notMatch (optional, default `false`) whether this block must not be matched for parsing to continue
    */
-  addMatchingRule(forks = false, optional = false, isInclusive = true, afterRepeat = false) {
+  addMatchingRule(forks = false, optional = false, isInclusive = true, afterRepeat = false, notMatch = false) {
     this.assertExists(this.current.block);
 
     let match = {
@@ -225,6 +230,7 @@ class Tree {
       inclusive: isInclusive,
       forks,
       optional,
+      notMatch,
       matches: [],
       repeat: undefined,
       collectionIdent: undefined,
@@ -304,11 +310,12 @@ class Tree {
     };
 
     this.assert(lastChild.type === types.BLOCK || lastChild.type === types.RLMATCH || lastChild.type === types.PATTERNREF, 'Repeat invalid in this position');
-    // this.assert(lastChild.repeat === undefined, 'Cannot repeat a repeat');
 
     let final = this.findFinalRuleWithNoRepeat(lastChild);
 
     this.assert(final, 'Cannot repeat a repeat');
+
+    this.assert(!final.notMatch, 'Cannot repeat a negative match');
 
     final.repeat = repeatObj;
     this.current.repeat = repeatObj;

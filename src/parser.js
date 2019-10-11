@@ -22,6 +22,7 @@ class Parser {
     this.optional = false;
     this.afterRepeat = false;
     this.forks = false;
+    this.notMatch = false;
 
     this.regex = {
       charsetAccept: /[^[\]{}()#@$]/,
@@ -72,6 +73,7 @@ class Parser {
     this.optional = false;
     this.afterRepeat = false;
     this.forks = false;
+    this.notMatch = false;
   }
 
   /**
@@ -82,6 +84,10 @@ class Parser {
     // After repeat and forks are mutually exclusive
     if (this.afterRepeat && this.forks) {
       this.error('Cannot use after and or in conjunction');
+    }
+
+    if (this.optional && this.notMatch) {
+      this.error('Cannot use optionally and not in conjunction');
     }
   }
 
@@ -227,7 +233,7 @@ class Parser {
           this.comment();
           break;
         case '(':
-          this.tree.addMatchingRule(this.forks, this.optional, true, this.afterRepeat);
+          this.tree.addMatchingRule(this.forks, this.optional, true, this.afterRepeat, this.notMatch);
           this.resetPrefixFlags();
           this.literal();
           success = true;
@@ -276,15 +282,20 @@ class Parser {
             this.verifyPrefixFlags();
             this.next();
             break;
+          case 'not':
+            this.notMatch = true;
+            this.verifyPrefixFlags();
+            this.next();
+            break;
           case 'any':
-            this.tree.addMatchingRule(this.forks, this.optional, true, this.afterRepeat);
+            this.tree.addMatchingRule(this.forks, this.optional, true, this.afterRepeat, this.notMatch);
             this.resetPrefixFlags();
             this.next();
             this.charset();
             success = true;
             break;
           case 'none':
-            this.tree.addMatchingRule(this.forks, this.optional, false, this.afterRepeat);
+            this.tree.addMatchingRule(this.forks, this.optional, false, this.afterRepeat, this.notMatch);
             this.resetPrefixFlags();
             this.next();
             this.charset();
@@ -306,13 +317,13 @@ class Parser {
             break;
           case 'start':
           case 'end':
-            this.tree.addMatchingRule(this.forks, this.optional, true, this.afterRepeat);
+            this.tree.addMatchingRule(this.forks, this.optional, true, this.afterRepeat, this.notMatch);
             this.tree.addMatchingCriterion(types.CRITENDPOINT, symbolName.toLowerCase());
             this.resetPrefixFlags();
             success = true;
             break;
           default:
-            this.tree.addPatternReference(symbolName, this.forks, this.optional, this.afterRepeat);
+            this.tree.addPatternReference(symbolName, this.forks, this.optional, this.afterRepeat, this.notMatch);
             this.resetPrefixFlags();
             success = true;
             // no need to advance on, whitespace will deal with anything else
@@ -616,7 +627,7 @@ class Parser {
    * Parse a block.
    */
   block() {
-    this.tree.addBlock(this.forks, this.optional, this.afterRepeat);
+    this.tree.addBlock(this.forks, this.optional, this.afterRepeat, this.notMatch);
     this.resetPrefixFlags();
     this.next('{');
 

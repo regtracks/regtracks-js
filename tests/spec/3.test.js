@@ -487,6 +487,53 @@ describe('tests section 3 of the specification', () => {
     expect(() => new Track(illFormedSchema2)).toThrow();
   });
 
+  test('section 3.3.8: not prefix', () => {
+    let schema = String.raw`
+      @no_match
+      ||
+      (a)
+      not {
+        (!) as exclam
+        (?)
+        }
+      any a to z, !, ? as text
+        times forever
+      ||
+
+      @position
+      ||
+      not {
+        (a)
+        any b to z
+        }
+      ||
+    `;
+
+    const track = new Track(schema);
+
+    let good = 'a!b!?';
+    let bad = 'a!?b';
+
+    expect(track.match(good, 'no_match').match).toBe(good);
+    expect(track.match(good, 'no_match').collected.exclam).toBeUndefined();
+    expect(track.match(good, 'no_match').collected.text).toBe('!b!?');
+    expect(track.test(bad, 'no_match')).toBe(false);
+
+    let testText = 'aa';
+    track.test(testText, 'position');
+    expect(track.lastIndex).toBe(0);
+
+    let illFormedSchema = String.raw`
+      @bad
+      ||
+      (b)
+      optionally not (a)
+      ||
+    `;
+
+    expect(() => new Track(illFormedSchema)).toThrow();
+  });
+
   test('section 3.4.1: as identifier', () => {
     let schema = String.raw`
       @collect

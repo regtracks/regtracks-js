@@ -324,6 +324,12 @@ class Track {
 
   genericRule(rule, config) {
     let status;
+    let checkpoint;
+
+    if (rule.notMatch) {
+      checkpoint = this.setCheckpoint();
+    }
+
     if (rule.type === types.RLMATCH || rule.type === types.PATTERNREF) {
       if (rule.repeat) {
         status = this.repeat(rule.repeat, config, this.rule, rule, config);
@@ -336,6 +342,12 @@ class Track {
       } else {
         status = this.block(rule, config);
       }
+    }
+
+    // If this rule/block was a negative match, then reset and invert the status
+    if (rule.notMatch) {
+      this.windback(checkpoint);
+      status = !status;
     }
 
     return status;

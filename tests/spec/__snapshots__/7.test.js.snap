@@ -16,6 +16,7 @@ Object {
               "type": "character_range_criterion",
             },
           ],
+          "notMatch": false,
           "optional": false,
           "repeat": Object {
             "after": Object {
@@ -28,6 +29,7 @@ Object {
                   "type": "variable",
                 },
               ],
+              "notMatch": false,
               "optional": false,
               "repeat": undefined,
               "type": "matching_rule",
@@ -50,6 +52,7 @@ Object {
               "type": "variable",
             },
           ],
+          "notMatch": false,
           "optional": false,
           "repeat": undefined,
           "type": "matching_rule",
@@ -57,6 +60,7 @@ Object {
       ],
       "collectionIdent": undefined,
       "forks": false,
+      "notMatch": false,
       "optional": false,
       "parent": undefined,
       "repeat": undefined,
