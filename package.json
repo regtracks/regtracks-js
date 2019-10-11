@@ -1,6 +1,6 @@
 {
   "name": "regtracks",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "The JS RegTracks parser",
   "main": "index.js",
   "author": "James Thistlewood",
