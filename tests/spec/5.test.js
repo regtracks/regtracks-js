@@ -80,6 +80,7 @@ describe('tests section 5 of the specification', () => {
       'end',
       'forever',
       'none',
+      'not',
       'optionally',
       'or',
       'space',

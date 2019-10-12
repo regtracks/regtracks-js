@@ -13,6 +13,7 @@ const RESERVED_SYMBOLS = [
   'end',
   'forever',
   'none',
+  'not',
   'optionally',
   'or',
   'space',
