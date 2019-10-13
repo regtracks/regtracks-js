@@ -1,7 +1,28 @@
 const Track = require('../../index');
 
 describe('tests section 7 of the specification', () => {
-  test('section 7.1: variables', () => {
+  test('section 7.1: variables from collection', () => {
+    let schema = String.raw`
+    @vars
+    ||
+    {
+      any a to z as str
+      ($str)
+      }
+      times forever
+    ||
+    `;
+
+    const track = new Track(schema);
+
+    const good = 'aababcabc';
+    const bad = 'adada';
+
+    expect(track.test(good, 'vars')).toBe(true);
+    expect(track.test(bad, 'vars')).toBe(false);
+  });
+
+  test('section 7.2: variables passed to parser', () => {
     let schema = String.raw`
     @vars
     ||
@@ -33,7 +54,7 @@ describe('tests section 7 of the specification', () => {
     expect(() => track.test(good, 'vars')).toThrow();
   });
 
-  test('section 7.2: variable names', () => {
+  test('section 7.3: variable names', () => {
     let illFormedSchema = String.raw`
       @morevars
       ||

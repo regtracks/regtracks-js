@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`tests section 7 of the specification section 7.1: variables 1`] = `
+exports[`tests section 7 of the specification section 7.2: variables passed to parser 1`] = `
 Object {
   "vars": Object {
     "name": "vars",

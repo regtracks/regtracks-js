@@ -416,7 +416,7 @@ class Track {
     if (criterion.type === types.CRITLITERAL || criterion.type === types.CRITVARIABLE) {
       let matches;
       if (criterion.type === types.CRITVARIABLE) {
-        matches = this.variables[criterion.matches];
+        matches = this.collected[criterion.matches] || this.variables[criterion.matches];
         if (!matches) {
           this.error(`No variable '${criterion.matches}' provided`);
         }
