@@ -93,6 +93,8 @@ chees3
 
 `test` in place of `match` can be invoked exactly the same, with the same options, but returns only `true` and `false` based on whether it matched or not.
 
+`replace` will replace any matches with a given replacement string.
+
 ## Contributing
 
 Contributions are very much welcomed! Please, fork and make a PR. Issues are also appreciated.

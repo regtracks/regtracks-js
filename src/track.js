@@ -140,6 +140,58 @@ class Track {
   }
 
   /**
+   * Replaces matches in a string with the provided replacement string.
+   * Note: the option `global` defaults to true when using this function.
+   *
+   * @param string the string in which to find matches
+   * @param entryPoint the pattern to use during matching
+   * @param replacementString the string with which to replace matches
+   * @param options the options object
+   * @param variables the object of variables
+   */
+  replace(string, entryPoint, replacementString, options, variables) {
+    options = {
+      global: true,
+      ...(options || {})
+    };
+
+    const replacements = [];
+    let match;
+    while (match = this.genericMatch(false, string, entryPoint, variables, options)) {
+      const newMatch = {
+        pos: match.index,
+        length: match.match.length,
+      };
+
+      let isValid = true;
+      for (let r of replacements) {
+        if (r.pos + r.length > newMatch.pos) {
+          isValid = false;
+          break;
+        }
+      }
+
+      if (!isValid) {
+        continue;
+      }
+
+      replacements.push(newMatch);
+
+      if (!this.options.global) {
+        break;
+      }
+    }
+
+    // Ordered by pos, so loop backwards
+    for (let i = replacements.length - 1; i > -1; --i) {
+      const replacement = replacements[i];
+      string = string.slice(0, replacement.pos) + replacementString + string.slice(replacement.pos + replacement.length, string.length);
+    }
+
+    return string;
+  }
+
+  /**
    * Actions to perform before parsing a string.
    */
   preparse(string, entryPoint, variables, options) {

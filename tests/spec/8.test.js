@@ -44,7 +44,38 @@ describe('tests section 8 of the specification', () => {
     expect(track.test(bad, 'list')).toBe(false);
   });
 
-  test('section 8.4.1: global', () => {
+  test('section 8.4: replace', () => {
+    const track = new Track(String.raw`
+      @simple_string
+      ||
+      (needle)
+      ||
+
+      @five_letters
+      ||
+      any a to z, A to Z
+        times 5
+      ||
+    `);
+
+    let startSimple = 'Find the needle in the haystack, or both the needles!';
+    let simpleReplace = 'donkey';
+    let endSimple = 'Find the donkey in the haystack, or both the donkeys!';
+    let startFive = 'The quick brown fox jumps over the lazy dog.';
+    let fiveReplace = 'REDACTED';
+    let endFive = 'The REDACTED REDACTED fox REDACTED over the lazy dog.';
+    let noChangeSimple = 'There are no sewing implements here, need dle?';
+    let noChangeFive = 'Why say lot word when few word do tri ck?';
+    let endSimpleNoGlobal = 'Find the donkey in the haystack, or both the needles!';
+
+    expect(track.replace(startSimple, 'simple_string', simpleReplace)).toBe(endSimple);
+    expect(track.replace(startFive, 'five_letters', fiveReplace)).toBe(endFive);
+    expect(track.replace(noChangeSimple, 'simple_string', simpleReplace)).toBe(noChangeSimple);
+    expect(track.replace(noChangeFive, 'five_letters', fiveReplace)).toBe(noChangeFive);
+    expect(track.replace(startSimple, 'simple_string', simpleReplace, { global: false })).toBe(endSimpleNoGlobal);
+  });
+
+  test('section 8.5.1: global', () => {
     const track = new Track(schema);
 
     let good = 'hi there   , Testing, one two three, d';
