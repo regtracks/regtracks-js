@@ -90,9 +90,12 @@ describe('tests section 8 of the specification', () => {
     let start = 'come and visit London or some other proper Place';
     let endItalic = 'come and visit _London_ or some other proper _Place_';
     let endNonexistent = 'come and visit $(foo) or some other proper $(foo)';
+    let startClose = 'come and visit London Town or some other proper Place';
+    let endClose = 'come and visit LondonLondon TownTown or some other proper PlacePlace';
 
     expect(track.replace(start, 'proper_noun', '_$(name)_')).toBe(endItalic);
     expect(track.replace(start, 'proper_noun', '$(foo)')).toBe(endNonexistent);
+    expect(track.replace(startClose, 'proper_noun', '$(name)$(name)')).toBe(endClose);
   });
 
   test('section 8.5.1: global', () => {

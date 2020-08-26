@@ -186,7 +186,7 @@ class Track {
       const replacement = replacements[i];
       let replaceWith = replacementString;
       let match;
-      while (match = this.regex.variableInReplacement.exec(replaceWith)) {
+      while (match = this.regex.variableInReplacement.exec(replacementString)) {
         if (!replacement.collected.hasOwnProperty(match[1])) {
           continue;
         }
