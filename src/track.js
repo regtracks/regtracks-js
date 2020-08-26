@@ -5,6 +5,7 @@
 const Parser = require('./parser');
 const types = require('./treeTypes');
 
+
 class Track {
   constructor(schema) {
     this.parser = new Parser(schema);
@@ -23,6 +24,7 @@ class Track {
 
     this.regex = {
       digit: /[0-9]/,
+      variableInReplacement: /\$\(([a-z0-9_]+)\)/ig,
     };
   }
 
@@ -161,18 +163,15 @@ class Track {
       const newMatch = {
         pos: match.index,
         length: match.match.length,
+        collected: match.collected,
       };
 
-      let isValid = true;
-      for (let r of replacements) {
-        if (r.pos + r.length > newMatch.pos) {
-          isValid = false;
-          break;
-        }
-      }
 
-      if (!isValid) {
-        continue;
+      if (replacements.length > 0) {
+        let last = replacements[replacements.length - 1];
+        if (last.pos + last.length > newMatch.pos) {
+          continue;
+        }
       }
 
       replacements.push(newMatch);
@@ -185,7 +184,15 @@ class Track {
     // Ordered by pos, so loop backwards
     for (let i = replacements.length - 1; i > -1; --i) {
       const replacement = replacements[i];
-      string = string.slice(0, replacement.pos) + replacementString + string.slice(replacement.pos + replacement.length, string.length);
+      let replaceWith = replacementString;
+      let match;
+      while (match = this.regex.variableInReplacement.exec(replaceWith)) {
+        if (!replacement.collected.hasOwnProperty(match[1])) {
+          continue;
+        }
+        replaceWith = replaceWith.replace(match[0], replacement.collected[match[1]]);
+      }
+      string = string.slice(0, replacement.pos) + replaceWith + string.slice(replacement.pos + replacement.length, string.length);
     }
 
     return string;

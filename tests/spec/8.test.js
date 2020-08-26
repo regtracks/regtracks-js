@@ -75,6 +75,26 @@ describe('tests section 8 of the specification', () => {
     expect(track.replace(startSimple, 'simple_string', simpleReplace, { global: false })).toBe(endSimpleNoGlobal);
   });
 
+  test('section 8.4.1: replace with collected', () => {
+    const track = new Track(String.raw`
+      @proper_noun
+      ||
+      {
+        any A to Z
+        any a to z
+          times forever
+      } as name
+      ||
+    `);
+
+    let start = 'come and visit London or some other proper Place';
+    let endItalic = 'come and visit _London_ or some other proper _Place_';
+    let endNonexistent = 'come and visit $(foo) or some other proper $(foo)';
+
+    expect(track.replace(start, 'proper_noun', '_$(name)_')).toBe(endItalic);
+    expect(track.replace(start, 'proper_noun', '$(foo)')).toBe(endNonexistent);
+  });
+
   test('section 8.5.1: global', () => {
     const track = new Track(schema);
 
